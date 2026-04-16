@@ -74,7 +74,7 @@ export default function Skills() {
           <div className="flex flex-wrap mt-6 mb-5.5 gap-x-3 gap-y-5.5">
             <FadeInWrapper>
               <SkillCard
-                iconSrc="/motion 2.png"
+                iconSrc="/motion.png"
                 description="Motion is a powerful animation library for React with physics-based motion."
                 link="https://motion.dev"
                 invertImg
