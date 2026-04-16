@@ -44,6 +44,7 @@ function Card({ title, imgSrc, description, designHref, liveLink }: CardProps) {
           width={633}
           height={338}
           alt="An image showcasing the product"
+          loading="eager"
         />
       </a>
       <h3 className="title text-center mt-5.5 mb-2.5">{title}</h3>
