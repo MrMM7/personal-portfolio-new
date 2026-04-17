@@ -3,33 +3,53 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 
 export default function Hero() {
-  const [slogan, setSlogan] = useState("");
-  const mySlogan =
+  const [mainSlogan, setMainSlogan] = useState("");
+  const [helloText, setHelloText] = useState("");
+
+  const fullHelloText = "Hello, I’m MrMM7";
+  const fullSlogan =
     "a passionate frontend developer building modern web experiences with Next.js.";
-
+  const textSpeed = 45
   useEffect(() => {
-    let i = 0;
+    const typeText = (
+      text: string,
+      setter: (value: string) => void,
+      speed: number,
+    ) => {
+      return new Promise((resolve) => {
+        let i = 0;
+        const interval = setInterval(() => {
+          if (i <= text.length) {
+            setter(text.slice(0, i));
+            i++;
+          } else {
+            clearInterval(interval);
+            resolve(true);
+          }
+        }, speed);
+      });
+    };
 
-    const interval = setInterval(() => {
-      setSlogan(mySlogan.slice(0, i + 1));
-      i++;
+    const runSequence = async () => {
+      await typeText(fullHelloText, setHelloText, textSpeed);
+      await typeText(fullSlogan, setMainSlogan, textSpeed);
+    };
 
-      if (i === mySlogan.length) {
-        clearInterval(interval);
-      }
-    }, 35);
-
-    return () => clearInterval(interval);
+    runSequence();
   }, []);
+
   return (
     <div className="flex justify-between mt-40 items-center">
       <div className="title pr-28.75">
-        <h1>Hello, I’m MrMM7</h1>
+        <h1>
+          {helloText}
+          {helloText.length !== fullHelloText.length &&
+            helloText.length !== 0 && <span className="animate-pulse">|</span>}
+        </h1>
         <p>
-          {slogan}
-          {slogan.length !== mySlogan.length && (
-            <span className="animate-pulse">|</span>
-          )}
+          {mainSlogan}
+          {mainSlogan.length !== fullSlogan.length &&
+            mainSlogan.length !== 0 && <span className="animate-pulse">|</span>}
         </p>
       </div>
       <Image
