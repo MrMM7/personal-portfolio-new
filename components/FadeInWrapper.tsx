@@ -7,7 +7,7 @@ export default function FadeInWrapper({ children }: { children: ReactNode }) {
       initial={{ opacity: 0, y: 15 }}
       transition={{ duration: 0.5 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
+      viewport={{ once: true, amount: 0.4 }}
     >
       {children}
     </motion.div>
