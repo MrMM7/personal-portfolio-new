@@ -34,7 +34,7 @@ export default function Hero() {
       await typeText(fullHelloText, setHelloText, textSpeed);
       setTimeout(
         async () => await typeText(fullSlogan, setMainSlogan, textSpeed),
-        800,
+        700,
       );
     };
 
