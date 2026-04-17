@@ -63,6 +63,14 @@ export default function Skills() {
                 link="https://git-scm.com"
               />
             </FadeInWrapper>
+
+            <FadeInWrapper>
+              <SkillCard
+                iconSrc="/figma.png"
+                description="Figma is a browser-based UI/UX design tool for real-time team collaboration."
+                link="https://figma.com"
+              />
+            </FadeInWrapper>
           </div>
         </div>
 
@@ -80,12 +88,11 @@ export default function Skills() {
                 invertImg
               />
             </FadeInWrapper>
-
             <FadeInWrapper>
               <SkillCard
                 iconSrc="/brush.png"
                 description="UI/UX combines visual design and user experience for intuitive digital products."
-                link="https://figma.com"
+                link="#skills"
               />
             </FadeInWrapper>
           </div>
@@ -114,7 +121,7 @@ function SkillCard({
       target="_blank"
       className="flex py-4 px-3 items-center gap-2.5 border border-secondary rounded-2xl shadow-md shadow-neutral-400 transition duration-150 hover:-translate-y-2 active:cursor-default"
     >
-      <div className="bg-primary w-14.5 h-13.75 rounded-lg flex justify-center items-center">
+      <div className="bg-black w-14.5 h-13.75 rounded-lg flex justify-center items-center">
         <Image
           src={iconSrc}
           width={45}

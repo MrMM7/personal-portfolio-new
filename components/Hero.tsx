@@ -9,7 +9,7 @@ export default function Hero() {
   const fullHelloText = "Hello, I’m MrMM7";
   const fullSlogan =
     "a passionate frontend developer building modern web experiences with Next.js.";
-  const textSpeed = 45
+  const textSpeed = 45;
   useEffect(() => {
     const typeText = (
       text: string,
@@ -48,8 +48,7 @@ export default function Hero() {
         </h1>
         <p>
           {mainSlogan}
-          {mainSlogan.length !== fullSlogan.length &&
-            mainSlogan.length !== 0 && <span className="animate-pulse">|</span>}
+          {mainSlogan.length !== 0 && <span className={mainSlogan.length === fullSlogan.length ? "cursor" : "animate-pulse"}>|</span>}
         </p>
       </div>
       <Image
