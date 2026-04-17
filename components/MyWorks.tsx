@@ -15,6 +15,7 @@ export default function MyWorks() {
           description="A clean, modern and aesthetically pleasing site inspired fully by Attio."
           designHref="https://www.figma.com/design/g0QLkMpBvd4CZBIDx5ZZvg/Attio---CRM-Landing-Page---Mobile-Responsive--Community-?m=auto&t=FMbND0GAllsMW8Qb-6"
           liveLink="https://attio-landing-page-nine.vercel.app"
+          stackIconSrc={["/react.png", "/next.png", "/ts.png", "/tailwind.png"]}
         />
         <Card
           title="Area Landing page"
@@ -22,6 +23,13 @@ export default function MyWorks() {
           description="A clean yet beautiful website inspired by the fictional company Area."
           designHref="https://www.figma.com/site/euoR81fIdbXmjw3SLbtCRX/Modern-Product-Launch--Community-?t=FMbND0GAllsMW8Qb-6"
           liveLink="https://area-landing-page-new.vercel.app"
+          stackIconSrc={[
+            "/react.png",
+            "/next.png",
+            "/ts.png",
+            "/tailwind.png",
+            "/motion.png",
+          ]}
         />
       </div>
     </div>
@@ -33,9 +41,17 @@ interface CardProps {
   description: string;
   designHref: string;
   liveLink: string;
+  stackIconSrc: string[];
 }
 
-function Card({ title, imgSrc, description, designHref, liveLink }: CardProps) {
+function Card({
+  title,
+  imgSrc,
+  description,
+  designHref,
+  liveLink,
+  stackIconSrc,
+}: CardProps) {
   return (
     <div className="w-fit border border-secondary px-2 pt-2 pb-10 rounded-[20px] hover:-translate-y-2 transition duration-150">
       <a href={liveLink} target="_blank">
@@ -50,6 +66,23 @@ function Card({ title, imgSrc, description, designHref, liveLink }: CardProps) {
       <h3 className="title text-center mt-5.5 mb-2.5">{title}</h3>
       <div className="pl-10">
         <p className="body max-w-xl">{description}</p>
+        <div>
+          <h4 className="body">Tech Stack:</h4>
+          <div className="flex gap-3 my-2.5">
+            {stackIconSrc.map((src) => {
+              return (
+                <Image
+                  src={src}
+                  width={50}
+                  height={50}
+                  alt="icon"
+                  key={src}
+                  className="object-contain rounded-lg bg-black p-0.75"
+                />
+              );
+            })}
+          </div>
+        </div>
         <a
           href={designHref}
           target="_blank"

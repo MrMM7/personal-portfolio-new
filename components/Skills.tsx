@@ -21,6 +21,7 @@ export default function Skills() {
                 iconSrc="/react.png"
                 description="React is a JavaScript library for building dynamic and reusable user interfaces."
                 link="https://react.dev"
+
               />
             </FadeInWrapper>
 
@@ -69,6 +70,7 @@ export default function Skills() {
                 iconSrc="/figma.png"
                 description="Figma is a browser-based UI/UX design tool for real-time team collaboration."
                 link="https://figma.com"
+                shrinkImg
               />
             </FadeInWrapper>
           </div>
@@ -85,14 +87,13 @@ export default function Skills() {
                 iconSrc="/motion.png"
                 description="Motion is a powerful animation library for React with physics-based motion."
                 link="https://motion.dev"
-                invertImg
               />
             </FadeInWrapper>
             <FadeInWrapper>
               <SkillCard
                 iconSrc="/brush.png"
                 description="UI/UX combines visual design and user experience for intuitive digital products."
-                link="#skills"
+                link="#"
               />
             </FadeInWrapper>
           </div>
@@ -105,20 +106,20 @@ export default function Skills() {
 interface SkillCardProps {
   iconSrc: string;
   description: string;
-  invertImg?: boolean;
   link: string;
+  shrinkImg?: boolean
 }
 
 function SkillCard({
   description,
   iconSrc,
-  invertImg = false,
+  shrinkImg=false,
   link,
 }: SkillCardProps) {
   return (
     <a
       href={link}
-      target="_blank"
+      target={link !== "#" ? "_blank" : "_self"}
       className="flex py-4 px-3 items-center gap-2.5 border border-secondary rounded-2xl shadow-md shadow-neutral-400 transition duration-150 hover:-translate-y-2 active:cursor-default"
     >
       <div className="bg-black w-14.5 h-13.75 rounded-lg flex justify-center items-center">
@@ -127,7 +128,7 @@ function SkillCard({
           width={45}
           height={45}
           alt="Icon"
-          className={`${invertImg ? "invert" : ""} w-auto h-auto`}
+          className={`w-auto h-auto ${shrinkImg && "px-4"}`}
         />
       </div>
       <p className="caption max-w-xs">{description}</p>

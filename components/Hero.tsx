@@ -32,7 +32,10 @@ export default function Hero() {
 
     const runSequence = async () => {
       await typeText(fullHelloText, setHelloText, textSpeed);
-      await typeText(fullSlogan, setMainSlogan, textSpeed);
+      setTimeout(
+        async () => await typeText(fullSlogan, setMainSlogan, textSpeed),
+        800,
+      );
     };
 
     runSequence();
@@ -44,11 +47,23 @@ export default function Hero() {
         <h1>
           {helloText}
           {helloText.length !== fullHelloText.length &&
-            helloText.length !== 0 && <span className="animate-pulse">|</span>}
+            helloText.length !== 0 && <span>|</span>}
         </h1>
         <p>
           {mainSlogan}
-          {mainSlogan.length !== 0 && <span className={mainSlogan.length === fullSlogan.length ? "cursor" : "animate-pulse"}>|</span>}
+          {helloText.length === fullHelloText.length && (
+            <span
+              className={
+                mainSlogan.length === fullSlogan.length ||
+                (helloText.length === fullHelloText.length &&
+                  mainSlogan.length === 0)
+                  ? "cursor"
+                  : ""
+              }
+            >
+              |
+            </span>
+          )}
         </p>
       </div>
       <Image
