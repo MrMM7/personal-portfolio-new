@@ -1,10 +1,11 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 
 export default function Hero() {
   const [mainSlogan, setMainSlogan] = useState("");
   const [helloText, setHelloText] = useState("");
+  const cursorRef = useRef<HTMLSpanElement>(null);
 
   const fullHelloText = "Hello, I’m MrMM7";
   const fullSlogan =
@@ -36,6 +37,10 @@ export default function Hero() {
         async () => await typeText(fullSlogan, setMainSlogan, textSpeed),
         700,
       );
+      await setTimeout(() => {
+        if (!cursorRef.current) return;
+        cursorRef.current.innerHTML = "";
+      }, 10000);
     };
 
     runSequence();
@@ -53,6 +58,7 @@ export default function Hero() {
           {mainSlogan}
           {helloText.length === fullHelloText.length && (
             <span
+              ref={cursorRef}
               className={
                 mainSlogan.length === fullSlogan.length ||
                 (helloText.length === fullHelloText.length &&
